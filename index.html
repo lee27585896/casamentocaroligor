@@ -212,10 +212,42 @@
     .ornament span { display: block; height: 1px; width: 60px; background: var(--gold-light); }
     .ornament svg { color: var(--gold); width: 16px; height: 16px; }
 
-    /* ── VERSÍCULO ── */
+    /* ── NOSSA HISTÓRIA & VERSÍCULO ── */
     #versiculo {
       background: var(--cream);
       text-align: center;
+    }
+    .historia-texto {
+      max-width: 760px;
+      margin: 0 auto 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(19px, 2.2vw, 23px);
+      line-height: 1.9;
+      color: #382e20;
+      font-weight: 300;
+      text-align: center;
+    }
+    .historia-texto p {
+      margin-bottom: 22px;
+    }
+    .historia-destaque {
+      font-size: clamp(22px, 2.6vw, 26px);
+      font-style: italic;
+      color: var(--gold-dark);
+      font-weight: 400;
+      margin: 30px 0 !important;
+    }
+    .historia-assinatura {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--gold-dark);
+      margin-top: 28px;
+    }
+    .versiculo-box {
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(201,168,76,0.3);
     }
     blockquote {
       font-family: 'Cormorant Garamond', serif;
@@ -781,20 +813,56 @@
     </div>
   </section>
 
-  <!-- VERSÍCULO -->
+  <!-- NOSSA HISTÓRIA & VERSÍCULO -->
   <section id="versiculo">
     <div class="section-inner" style="text-align:center">
-      <span class="section-tag">Uma só carne</span>
+      <span class="section-tag">Nossa História</span>
+      <h2 class="section-title">Como tudo <em>começou</em></h2>
       <div class="ornament">
         <span></span>
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span></span>
       </div>
-      <blockquote>
-        "Assim, eles já não são dois, mas uma só carne.<br />
-        Portanto, o que Deus uniu, ninguém separe."
-      </blockquote>
-      <cite>Mateus 19:6</cite>
+
+      <div class="historia-texto">
+        <p>
+          Nossa história começou ainda na escola, quando nossos caminhos se cruzaram pela primeira vez. Igor viu Ana Carolina em uma apresentação de dança e, depois daquele momento, uma simples conversa pelo Facebook acabou se transformando em algo muito maior.
+        </p>
+
+        <p class="historia-destaque">
+          "O que começou com algumas mensagens se tornou uma história de amor que já atravessa 12 anos."
+        </p>
+
+        <p>
+          Ao longo desse tempo, compartilhamos sonhos, conquistas, desafios, risadas e muitos momentos que fizeram nosso amor crescer e se fortalecer. Nesse caminho, também tivemos duas companheiras muito especiais: nossa querida gatinha Marília, que deixou muitas lembranças e um pedacinho dela para sempre em nossos corações, e depois a Catarina, nossa gatinha que hoje completa a nossa família com seu jeitinho único. 🐱❤️
+        </p>
+
+        <p>
+          Foi em uma viagem para Angra dos Reis que Igor fez o pedido que mudaria mais uma vez a nossa história: o pedido de casamento.
+        </p>
+
+        <p>
+          Agora, depois de tantos anos caminhando lado a lado, chegou o momento de celebrar o nosso amor e começar um novo capítulo juntos.
+        </p>
+
+        <p>
+          E queremos que vocês estejam conosco nesse dia tão especial, porque algumas histórias são bonitas demais para serem vividas sozinhas — elas merecem ser celebradas ao lado de quem amamos.
+        </p>
+
+        <p class="historia-assinatura">
+          Com amor,<br />
+          <strong>Igor & Ana Carolina</strong> ❤️
+        </p>
+      </div>
+
+      <div class="versiculo-box">
+        <span class="section-tag" style="margin-bottom:12px">Uma só carne</span>
+        <blockquote>
+          "Assim, eles já não são dois, mas uma só carne.<br />
+          Portanto, o que Deus uniu, ninguém separe."
+        </blockquote>
+        <cite>Mateus 19:6</cite>
+      </div>
     </div>
   </section>
 
@@ -837,9 +905,17 @@
       </div>
 
       <div class="slider-container" id="photoSlider">
-        <!-- Slide 1 (Nova foto do ensaio) -->
+        <!-- Slide 1 (Foto do ensaio) -->
         <div class="slider-slide active">
           <img src="assets/img/foto-ensaio.jpg" alt="Carol e Igor — Foto do Ensaio" />
+        </div>
+        <!-- Slide 2 (Foto no altar) -->
+        <div class="slider-slide">
+          <img src="assets/img/foto-casal-2.webp" alt="Carol e Igor — Altar" />
+        </div>
+        <!-- Slide 3 (Foto ao pôr do sol) -->
+        <div class="slider-slide">
+          <img src="assets/img/foto-casal-3.jpg" alt="Carol e Igor — Momento Especial" />
         </div>
 
         <!-- Setas flutuantes elegantes em cima da foto -->
@@ -850,9 +926,11 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <!-- Indicador de slide -->
+        <!-- Indicadores de slide -->
         <div class="slider-dots" id="sliderDots">
           <button class="slider-dot active" onclick="goToSlide(0)"></button>
+          <button class="slider-dot" onclick="goToSlide(1)"></button>
+          <button class="slider-dot" onclick="goToSlide(2)"></button>
         </div>
       </div>
     </div>
