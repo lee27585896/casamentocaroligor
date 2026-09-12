@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carol & Igor — 20.03.2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #A07830;
+      --white: #FDFBF7;
+      --cream: #F5F0E8;
+      --dark: #2C2416;
+      --gray: #7A7060;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 18px 40px;
+      display: flex; justify-content: center; gap: 40px;
+      background: rgba(253,251,247,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      transition: all 0.3s;
+    }
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--gold); }
+    nav a.gold-btn {
+      background: var(--gold);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 2px;
+      letter-spacing: 0.15em;
+    }
+    nav a.gold-btn:hover { background: var(--gold-dark); color: white; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('assets/img/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.65);
+      transition: opacity 0.5s;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.1) 40%,
+        rgba(44,36,22,0.70) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 20px 20px 60px;
+      color: white;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+    }
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 300;
+      line-height: 1;
+      color: white;
+      letter-spacing: 0.02em;
+    }
+    .hero-amp {
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 300;
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin: 18px 0;
+    }
+    .hero-divider span { display: block; height: 1px; width: 60px; background: var(--gold-light); opacity: 0.7; }
+    .hero-divider svg { color: var(--gold-light); }
+
+    /* ── SECTION COUNTDOWN (EMBAIXO DA IMAGEM) ── */
+    #section-countdown {
+      background: var(--cream);
+      padding: 60px 20px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      text-align: center;
+    }
+    .countdown-header {
+      margin-bottom: 24px;
+    }
+    .countdown-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .countdown-place {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+    .countdown {
+      display: flex; gap: 36px; justify-content: center;
+      margin-top: 20px;
+    }
+    .count-item { text-align: center; }
+    .count-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1;
+      display: block;
+    }
+    .count-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 6px;
+      display: block;
+    }
+    .count-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      color: var(--gold);
+      opacity: 0.7;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    /* ── SCROLL ARROW ── */
+    .scroll-arrow {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 2; animation: bounce 2s infinite;
+    }
+    .scroll-arrow svg { opacity: 0.6; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 20px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-tag {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      display: block; text-align: center;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--gold-dark); }
+    .ornament {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin: 20px 0 40px;
+    }
+    .ornament span { display: block; height: 1px; width: 60px; background: var(--gold-light); }
+    .ornament svg { color: var(--gold); width: 16px; height: 16px; }
+
+    /* ── VERSÍCULO ── */
+    #versiculo {
+      background: var(--cream);
+      text-align: center;
+    }
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    cite {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── LOCAL ── */
+    #local { background: var(--white); }
+    .local-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+      margin-top: 20px;
+    }
+    .local-map-container {
+      width: 100%;
+      min-height: 380px;
+      height: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 10px 30px rgba(44,36,22,0.06);
+    }
+    .local-map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+      display: block;
+    }
+    .local-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream);
+      padding: 36px 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+    .local-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .local-insta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .local-insta:hover { color: var(--gold); }
+    .local-address {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
+    }
+    .local-details {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .local-detail {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--dark);
+    }
+    .local-detail svg { color: var(--gold); flex-shrink: 0; }
+    
+    .local-actions-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .local-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-nav-app {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      flex: 1 1 auto;
+      text-align: center;
+    }
+    .btn-nav-primary {
+      background: var(--gold);
+      color: white;
+      border: 1px solid var(--gold);
+    }
+    .btn-nav-primary:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+    .btn-nav-waze {
+      background: white;
+      color: #333333;
+      border: 1px solid #d4d4d4;
+    }
+    .btn-nav-waze:hover {
+      background: #f0f7ff;
+      border-color: #33ccff;
+      color: #0077aa;
+    }
+
+    /* ── RSVP ── */
+    #rsvp { background: var(--cream); }
+    .rsvp-form {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid var(--gold-light);
+      background: white;
+      padding: 14px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      color: var(--dark);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: var(--gold-dark); }
+    .rsvp-success {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border: 1px solid var(--gold-light);
+      border-radius: 2px;
+    }
+    .rsvp-success p:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .rsvp-success p:last-child {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ── GALERIA DOS NOIVOS (FOTO COM OVERLAY CLEAN E AUTO-PLAY) ── */
+    #galeria { background: var(--cream); }
+    .slider-container {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(44,36,22,0.12);
+      border: 1px solid var(--gold-light);
+      background: #000;
+      aspect-ratio: 2/3;
+    }
+    .slider-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slider-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Setas minimalistas e elegantes DENTRO da própria foto */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .slider-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: white;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .slider-prev { left: 16px; }
+    .slider-next { right: 16px; }
+    .slider-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+    }
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    .slider-dot.active {
+      background: var(--gold);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    /* ── RECADOS ── */
+    #recados { background: var(--white); }
+    .message-form {
+      max-width: 560px;
+      margin: 0 auto 60px;
+    }
+    .messages-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .message-card {
+      background: var(--cream);
+      padding: 24px 28px;
+      border-left: 3px solid var(--gold-light);
+      position: relative;
+    }
+    .message-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .message-author {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── PRESENTES BTN ── */
+    .btn-presentes {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-presentes:hover { background: var(--gold); color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+    }
+    footer span { color: var(--gold-light); }
+
+    /* ── MUSIC PLAYER ── */
+    .music-btn {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+      transition: all 0.3s;
+    }
+    .music-btn:hover { background: var(--gold-dark); transform: scale(1.05); }
+    .music-btn svg { color: white; }
+    .music-tooltip {
+      position: fixed;
+      bottom: 90px; right: 28px;
+      background: var(--dark);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 8px 14px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .music-btn:hover + .music-tooltip { opacity: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 12px 14px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav a {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+      }
+      nav a.gold-btn {
+        padding: 6px 14px;
+        font-size: 10px;
+      }
+      section {
+        padding: 64px 16px;
+      }
+      .hero-content {
+        padding: 20px 14px 60px;
+      }
+      .hero-names {
+        font-size: clamp(40px, 12vw, 68px);
+      }
+      .hero-divider {
+        margin: 16px 0;
+      }
+      .hero-divider span {
+        width: 40px;
+      }
+      .hero-date {
+        font-size: 18px;
+        letter-spacing: 0.2em;
+      }
+      .hero-place {
+        font-size: 11px;
+        line-height: 1.5;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      #section-countdown {
+        padding: 44px 16px;
+      }
+      .countdown-date {
+        font-size: 22px;
+      }
+      .countdown {
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .count-num {
+        font-size: 36px;
+      }
+      .count-label {
+        font-size: 8px;
+        letter-spacing: 0.18em;
+      }
+      .count-sep {
+        font-size: 26px;
+        margin-top: 2px;
+      }
+      .local-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .local-map-container {
+        min-height: 280px;
+      }
+      .local-map-container iframe {
+        min-height: 280px;
+      }
+      .local-info {
+        padding: 24px 20px;
+      }
+      .local-name {
+        font-size: 28px;
+      }
+      .local-btn-group {
+        flex-direction: column;
+      }
+      .btn-nav-app {
+        width: 100%;
+      }
+      .music-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 46px;
+        height: 46px;
+      }
+      .music-tooltip {
+        display: none;
+      }
+      .hero-bg {
+        background-position: center top;
+      }
+      .slider-container {
+        max-width: 90%;
+        border-radius: 6px;
+      }
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+      }
+      .slider-prev { left: 10px; }
+      .slider-next { right: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#versiculo">Nossa História</a>
+    <a href="#rsvp">Confirmar Presença</a>
+    <a href="#galeria">Momentos</a>
+    <a href="#local">Local</a>
+    <a href="#recados">Recados</a>
+    <a href="presentes.html" class="gold-btn">🎁 Lista de Presentes</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Com a bênção de Deus e de nossos pais</p>
+
+      <h1 class="hero-names">Ana Carolina</h1>
+      <div class="hero-divider">
+        <span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span></span>
+      </div>
+      <h1 class="hero-names">Igor Trindade</h1>
+    </div>
+
+    <div class="scroll-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CONTAGEM REGRESSIVA (LOGO ABAIXO DA FOTO) -->
+  <section id="section-countdown">
+    <div class="section-inner">
+      <div class="countdown-header">
+        <p class="countdown-date">20 · 03 · 2027</p>
+        <p class="countdown-place">Sábado · 17h · Espaço Celebrare · Ferraz de Vasconcelos</p>
+      </div>
+
+      <div class="countdown">
+        <div class="count-item">
+          <span class="count-num" id="cdDias">--</span>
+          <span class="count-label">Dias</span>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-item">
+          <span class="count-num" id="cdHoras">--</span>
+          <span class="count-label">Horas</span>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-item">
+          <span class="count-num" id="cdMin">--</span>
+          <span class="count-label">Minutos</span>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-item">
+          <span class="count-num" id="cdSeg">--</span>
+          <span class="count-label">Segundos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSÍCULO -->
+  <section id="versiculo">
+    <div class="section-inner" style="text-align:center">
+      <span class="section-tag">Uma só carne</span>
+      <div class="ornament">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <span></span>
+      </div>
+      <blockquote>
+        "Assim, eles já não são dois, mas uma só carne.<br />
+        Portanto, o que Deus uniu, ninguém separe."
+      </blockquote>
+      <cite>Mateus 19:6</cite>
+    </div>
+  </section>
+
+  <!-- RSVP (LOGO ABAIXO DA MENSAGEM UMA SÓ CARNE) -->
+  <section id="rsvp">
+    <div class="section-inner">
+      <span class="section-tag" style="text-align:center;display:block">Confirme até 20.01.2027</span>
+      <h2 class="section-title">Confirme sua <em>Presença</em></h2>
+      <div class="ornament">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span></span>
+      </div>
+
+      <div class="rsvp-form">
+        <div id="rsvpForm">
+          <div class="form-group">
+            <label>Nome do convite (como está no convite)</label>
+            <input type="text" id="rsvpNome" placeholder="Ex: Família Silva ou Nome do Convidado" />
+          </div>
+          <button class="btn-submit" onclick="enviarRsvp()">Confirmar Presença</button>
+        </div>
+        <div class="rsvp-success" id="rsvpSuccess">
+          <p>Presença confirmada! 💛</p>
+          <p id="rsvpSuccessMsg">Carol e Igor estão muito felizes em celebrar esse momento com você.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA DOS NOIVOS (FOTO COM OVERLAY CLEAN E AUTO-PLAY) -->
+  <section id="galeria">
+    <div class="section-inner">
+      <span class="section-tag" style="text-align:center;display:block">Nossos Momentos</span>
+      <h2 class="section-title">Fotos dos <em>Noivos</em></h2>
+      <div class="ornament">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span></span>
+      </div>
+
+      <div class="slider-container" id="photoSlider">
+        <!-- Slide 1 (Nova foto do ensaio) -->
+        <div class="slider-slide active">
+          <img src="assets/img/foto-ensaio.jpg" alt="Carol e Igor — Foto do Ensaio" />
+        </div>
+
+        <!-- Setas flutuantes elegantes em cima da foto -->
+        <button class="slider-btn slider-prev" onclick="changeSlide(-1)" title="Foto anterior" aria-label="Foto anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="slider-btn slider-next" onclick="changeSlide(1)" title="Próxima foto" aria-label="Próxima foto">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <!-- Indicador de slide -->
+        <div class="slider-dots" id="sliderDots">
+          <button class="slider-dot active" onclick="goToSlide(0)"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL -->
+  <section id="local">
+    <div class="section-inner">
+      <span class="section-tag" style="text-align:center;display:block">Onde nos encontrar</span>
+      <h2 class="section-title">O <em>Local</em></h2>
+      <div class="ornament">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span></span>
+      </div>
+      <div class="local-grid">
+        <!-- MAPA INTERATIVO EMBED -->
+        <div class="local-map-container">
+          <iframe
+            src="https://maps.google.com/maps?q=Espa%C3%A7o%20Celebrare%20Av.%20do%20Paiol%202616%20Ferraz%20de%20Vasconcelos&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Espaço Celebrare">
+          </iframe>
+        </div>
+
+        <div class="local-info">
+          <p class="local-name">Espaço Celebrare</p>
+          <a href="https://www.instagram.com/oficialespacocelebrare/" target="_blank" rel="noopener" class="local-insta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            @oficialespacocelebrare
+          </a>
+          <p class="local-address">
+            Av. do Paiol, 2616 — Altura 3<br />
+            Ferraz de Vasconcelos — SP
+          </p>
+
+          <div class="local-details">
+            <div class="local-detail">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span>20 de março de 2027 — Sábado</span>
+            </div>
+            <div class="local-detail">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>Cerimônia às 17h00</span>
+            </div>
+          </div>
+
+          <p class="local-actions-label">Abrir no seu aplicativo de navegação:</p>
+          <div class="local-btn-group">
+            <!-- Botão inteligente Maps (detecta iOS / Android / PC) -->
+            <a id="btnPrimaryMaps" href="https://maps.app.goo.gl/FSWtTyShdraJjVE89" target="_blank" rel="noopener" class="btn-nav-app btn-nav-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span id="btnPrimaryMapsText">Abrir no Maps</span>
+            </a>
+
+            <!-- Botão Waze -->
+            <a href="https://waze.com/ul?q=Espaço%20Celebrare%20Av.%20do%20Paiol%202616%20Ferraz%20de%20Vasconcelos" target="_blank" rel="noopener" class="btn-nav-app btn-nav-waze">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h.01M16 12h.01M9 16c1.5 1 4.5 1 6 0"/></svg>
+              Abrir no Waze
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECADOS -->
+  <section id="recados">
+    <div class="section-inner">
+      <span class="section-tag" style="text-align:center;display:block">Mural</span>
+      <h2 class="section-title">Deixe seu <em>Recado</em></h2>
+      <div class="ornament">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span></span>
+      </div>
+
+      <div class="message-form">
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" id="msgNome" placeholder="Como quer ser identificado?" />
+        </div>
+        <div class="form-group">
+          <label>Seu recado</label>
+          <textarea id="msgTexto" placeholder="Escreva uma mensagem de carinho para o casal..." style="min-height:120px"></textarea>
+        </div>
+        <button class="btn-submit" onclick="enviarRecado()">Enviar Recado</button>
+      </div>
+
+      <div class="messages-list" id="messagesList">
+        <!-- Recados aparecem aqui -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Feito com <span>♥</span> para <span>Carol & Igor</span> · 20.03.2027</p>
+  </footer>
+
+  <!-- MUSIC PLAYER -->
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Música">
+    <svg id="musicIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+  </button>
+  <div class="music-tooltip">🎵 Música ambiente</div>
+
+  <!-- Coloque um arquivo MP3 em assets/audio/musica.mp3 -->
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    // ── COUNTDOWN ──
+    function updateCountdown() {
+      const wedding = new Date('2027-03-20T17:00:00-03:00');
+      const now = new Date();
+      const diff = wedding - now;
+      if (diff <= 0) {
+        document.querySelector('.countdown').innerHTML = '<p style="color:var(--gold-light);font-family:Cormorant Garamond,serif;font-size:28px;font-weight:300">Hoje é o grande dia! 💛</p>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cdDias').textContent  = String(d).padStart(2,'0');
+      document.getElementById('cdHoras').textContent = String(h).padStart(2,'0');
+      document.getElementById('cdMin').textContent   = String(m).padStart(2,'0');
+      document.getElementById('cdSeg').textContent   = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── HERO IMAGE fallback ──
+    const heroBg = document.getElementById('heroBg');
+    const testImg = new Image();
+    testImg.onload = () => { /* imagem existe, mantém o bg */ };
+    testImg.onerror = () => {
+      heroBg.style.backgroundImage = 'none';
+      heroBg.style.background = 'linear-gradient(135deg, #2C2416 0%, #5C4020 50%, #2C2416 100%)';
+      heroBg.style.filter = 'none';
+    };
+    testImg.src = 'assets/img/hero.jpg';
+
+    // ── DETECT OS & MAPS ROUTING ──
+    (function setupSmartNavigation() {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isAndroid = /Android/.test(navigator.userAgent);
+      
+      const btn = document.getElementById('btnPrimaryMaps');
+      const text = document.getElementById('btnPrimaryMapsText');
+      
+      if (btn && text) {
+        if (isIOS) {
+          // No iOS abre no Apple Maps com fallback/coord do local
+          btn.href = "maps://?q=Espaço+Celebrare&address=Av.+do+Paiol,+2616,+Ferraz+de+Vasconcelos,+SP";
+          text.textContent = "Abrir no Apple Maps";
+        } else if (isAndroid) {
+          // No Android abre no Google Maps nativo
+          btn.href = "geo:0,0?q=Av.+do+Paiol,+2616,+Ferraz+de+Vasconcelos,+SP(Espaço+Celebrare)";
+          text.textContent = "Abrir no Google Maps";
+        } else {
+          // Desktop / outros
+          btn.href = "https://maps.app.goo.gl/FSWtTyShdraJjVE89";
+          text.textContent = "Abrir no Google Maps";
+        }
+      }
+    })();
+
+    // ── RSVP ──
+    function enviarRsvp() {
+      const nome = document.getElementById('rsvpNome').value.trim();
+      if (!nome) { alert('Por favor, digite o nome como está no convite.'); return; }
+      
+      // Salva no localStorage para registro
+      const rsvpList = JSON.parse(localStorage.getItem('carolIgorRsvp') || '[]');
+      rsvpList.push({ nome: nome, data: new Date().toLocaleString('pt-BR') });
+      localStorage.setItem('carolIgorRsvp', JSON.stringify(rsvpList));
+
+      const successMsg = document.getElementById('rsvpSuccessMsg');
+      if (successMsg) {
+        successMsg.innerHTML = `<strong>${nome}</strong>, sua presença foi confirmada!<br>Carol e Igor estão muito felizes em celebrar esse momento com você.`;
+      }
+
+      document.getElementById('rsvpForm').style.display = 'none';
+      document.getElementById('rsvpSuccess').style.display = 'block';
+    }
+
+    // ── RECADOS ──
+    function loadMessages() {
+      const msgs = JSON.parse(localStorage.getItem('carolIgorMsgs') || '[]');
+      const list = document.getElementById('messagesList');
+      list.innerHTML = msgs.length === 0
+        ? '<p style="text-align:center;color:var(--gray);font-size:14px">Seja o primeiro a deixar um recado! 💛</p>'
+        : msgs.map(m => `
+            <div class="message-card">
+              <p class="message-text">"${m.texto}"</p>
+              <p class="message-author">— ${m.nome}</p>
+            </div>`).join('');
+    }
+
+    function enviarRecado() {
+      const nome = document.getElementById('msgNome').value.trim();
+      const texto = document.getElementById('msgTexto').value.trim();
+      if (!nome || !texto) { alert('Preencha seu nome e o recado.'); return; }
+      const msgs = JSON.parse(localStorage.getItem('carolIgorMsgs') || '[]');
+      msgs.unshift({ nome, texto });
+      localStorage.setItem('carolIgorMsgs', JSON.stringify(msgs));
+      document.getElementById('msgNome').value = '';
+      document.getElementById('msgTexto').value = '';
+      loadMessages();
+    }
+
+    loadMessages();
+
+    // ── MUSIC ──
+    let playing = false;
+    const audio = document.getElementById('bgMusic');
+    const iconEl = document.getElementById('musicIcon');
+
+    function toggleMusic() {
+      if (playing) {
+        audio.pause();
+        playing = false;
+        iconEl.innerHTML = '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>';
+      } else {
+        audio.play().catch(() => {});
+        playing = true;
+        iconEl.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+      }
+    }
+
+    // ── GALERIA SLIDESHOW COM AUTO-PLAY & NAVEGAÇÃO ──
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let slideTimer = null;
+
+    function showSlide(index) {
+      if (!slides.length) return;
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+      resetSlideTimer();
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+      resetSlideTimer();
+    }
+
+    function resetSlideTimer() {
+      if (slideTimer) clearInterval(slideTimer);
+      slideTimer = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000); // Passa suavemente a cada 5 segundos
+    }
+
+    resetSlideTimer();
+  </script>
+</body>
+</html>
